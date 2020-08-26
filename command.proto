@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package krok;
+
+message ExecuteRequest {
+    // this is the raw json payload which each command will need.
+    string raw = 1;
+}
+
+message ExecuteResponse {
+    // A possible outcome of the command and a success indicator.
+    string outcome = 1;
+    bool success = 2;
+}
+
+message Empty{}
+
+service Command {
+    rpc Execute (ExecuteRequest) returns (ExecuteResponse);
+}
